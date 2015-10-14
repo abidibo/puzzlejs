@@ -64,7 +64,7 @@ var pz = pz || {};
         slot_color: '#666',
         puzzle_completed_text: 'puzzle completed in %TIME s!',
         set: function(options) {
-            for(p in options) {
+            for(var p in options) {
                 this[p] = options[p];
             }
             return this;
