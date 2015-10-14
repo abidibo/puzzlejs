@@ -51,38 +51,38 @@ var pz = pz || {};
     /**
      * Options singleton object
      */
-    pz.Options = {
-        move_after_shuffle: true,
-        hide_original: false,
-        render_to: null,
-        rows: 5,
-        cols: 5,
-        margin: 100,
-        snap_offset: 50,
-        snap_color: '#00ff00',
-        grid_color: '#0000ff',
-        slot_color: '#666',
-        puzzle_completed_text: 'puzzle completed in %TIME s!',
-        set: function(options) {
+    pz.Options = function() {
+        this.move_after_shuffle = true;
+        this.hide_original =  false;
+        this.render_to =  null;
+        this.rows =  5;
+        this.cols =  5;
+        this.margin =  100;
+        this.snap_offset =  50;
+        this.snap_color =  '#00ff00';
+        this.grid_color =  '#0000ff';
+        this.slot_color =  '#666';
+        this.puzzle_completed_text =  'puzzle completed in %TIME s!';
+        this.set =  function(options) {
             for(var p in options) {
                 this[p] = options[p];
             }
             return this;
-        }
+        };
     };
 
     /**
      * Singelton object which tracks the current puzzle state
      */
-    pz.State = {
-        dragoffx: 0,
-        dragoffy: 0,
-        dragging: false,
-        selection: null,
-        redraw: true,
-        go_snap: false,
-        shuffled: false,
-        shuffle_time_start: null
+    pz.State = function() {
+        this.dragoffx =  0;
+        this.dragoffy =  0;
+        this.dragging =  false;
+        this.selection =  null;
+        this.redraw =  true;
+        this.go_snap =  false;
+        this.shuffled =  false;
+        this.shuffle_time_start =  null;
     };
 
     /**
@@ -137,8 +137,8 @@ var pz = pz || {};
         this.in_place = true;
 
         this.puzzle = puzzle;
-        this.state = pz.State;
-        this.options = pz.Options;
+        this.state = puzzle.state;
+        this.options = puzzle.options;
         this.dispatcher = pz.EventDispatcher;
 
         /**
@@ -224,7 +224,7 @@ var pz = pz || {};
      */
     pz.Puzzle = function(img_id, options) {
 
-        this.options = pz.Options.set(options);
+        this.options = new pz.Options().set(options);
         this.image = document.getElementById(img_id);
 
         /**
@@ -240,7 +240,7 @@ var pz = pz || {};
             this.canvas.style.border = '1px solid #000';
             this.context = this.canvas.getContext('2d');
 
-            this.state = pz.State;
+            this.state = new pz.State();
             this.dispatcher = pz.EventDispatcher;
 
             this.createGrid();
