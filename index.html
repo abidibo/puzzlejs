@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PUZZLE</title>
+        <meta charset="utf-8">
+        <script src="js/puzzle.js"></script>
+    </head>
+    <body>
+        <h1>Puzzle</h1>
+        <table>
+            <tr>
+                <td><img id="puzzle" src="img/img.jpg" /></td>
+                <td>
+                    <p><button onclick="p.shuffle()">SHUFFLE</button></p>
+                    <div id="here"></div>
+                </td>
+            </tr>
+        </table>
+        <script>
+            var p = new pz.Puzzle('puzzle', { render_to: 'here', rows: 1, cols: 2 });
+        </script>
+    </body>
+</html>
