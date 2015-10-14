@@ -304,7 +304,7 @@ var pz = pz || {};
         this.shuffle = function() {
 
             for (var i = 0, len = this.slots.length; i < len; i++) {
-                this.slots[i].setPosition(Math.random() * this.image.naturalWidth, Math.random() * this.image.naturalHeight);
+                this.slots[i].setPosition(Math.random() * (this.canvas.width - this.slots[i].width), Math.random() * (this.canvas.height - this.slots[i].height));
             }
             this.state.shuffled = true;
             this.state.shuffle_time_start = new Date().getTime();
