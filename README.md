@@ -1,17 +1,17 @@
-#Puzzle Js Library
+# Puzzle Js Library
 
 This is a simple javascript library which can generate a puzzle of x rows and y columns of a given image.
 The image is divided in a number (x * y) of slots, all of the same size.
 
-##License
+## License
 
 This software is distributed under the MIT License, read more at https://opensource.org/licenses/MIT
 
-##Requirements
+## Requirements
 
 This library is written in vanilla javascript, so you don't need any js framework
 
-##Getting Started
+## Getting Started
 
 Include the library
 
@@ -25,7 +25,7 @@ Then in the document
         var p = new pz.Puzzle('myImage', { render_to: 'here', rows: 3, cols: 2 });
     </script>
 
-##Usage
+## Usage
 
     var p = new Puzzle(img_id, options);
 
